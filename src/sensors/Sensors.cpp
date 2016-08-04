@@ -19,7 +19,6 @@ void Sensors::updateMq135() {
 }
 
 void Sensors::updateDht22() {
-  delay(2000);
   if (!isnan(dhtSensor->readHumidity())){
 
     vals->setHumidity(dhtSensor->readHumidity());
