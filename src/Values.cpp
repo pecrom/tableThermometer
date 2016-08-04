@@ -2,13 +2,12 @@
 #include "Arduino.h"
 
 Values::Values() {
-  humidity = 100.5;
+  humidity = 99.9;
   temperature = 32.5;
   co2 = 1028;
 }
 
 void Values::setHumidity(float humidity) {
-  //this->humidity = humidity;
   assignIfDifferent(this->humidity, humidity);
 }
 
