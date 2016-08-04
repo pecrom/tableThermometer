@@ -12,11 +12,10 @@ class Lcd {
     static const char *HUMIDITY_LABEL;
     static const char *TEMPERATURE_LABEL;
     static const char *CO2_LABEL;
-    static const short HUM_VAL_LEFT_MARGIN;
+    static const short VALS_LEFT_MARGIN;
     char humStr[6];
     char tmpStr[6];
     char co2Str[5];
-    short humValueX;
     void initDisplay();
     void prepareUI();
     void showValues();
