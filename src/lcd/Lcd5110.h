@@ -16,16 +16,18 @@ class Lcd5110 {
     static const short LCD_Y;
     static const short LCD_CMD;
     static const byte ASCII[][5];
+    static const char INDEX_MAP[];
     void lcdWrite(byte, byte);
+    int findCharIndex(char);
 
   public:
     Lcd5110(short, short, short, short, short);
     void lcdClear();
     void lcdCharacter(char);
     void lcdInitialise(void);
-    void lcdString(char*);
+    void lcdString(const char*);
     void gotoXY(int, int);
-
+    void drawBox();
 };
 
 #endif

@@ -45,7 +45,7 @@ void loop() {
 sensors->update();
 
  lcd->update();
- delay(200);
+ delay(100);
   // Wait a few seconds between measurements.
   /*delay(12000);
   Serial.print("Humidity1: ");

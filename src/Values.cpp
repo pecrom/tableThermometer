@@ -8,12 +8,12 @@ Values::Values() {
 }
 
 void Values::setHumidity(float humidity) {
-  this->humidity = humidity;
-  //assignIfDifferent(this->humidity, humidity);
+  //this->humidity = humidity;
+  assignIfDifferent(this->humidity, humidity);
 }
 
 void Values::setTemperature(float temperature) {
-  //assignIfDifferent(this->temperature, temperature);
+  assignIfDifferent(this->temperature, temperature);
 }
 
 void Values::setCo2(short co2) {
