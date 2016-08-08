@@ -20,7 +20,6 @@ void Sensors::updateMq135() {
 
 void Sensors::updateDht22() {
   if (!isnan(dhtSensor->readHumidity())){
-
     vals->setHumidity(dhtSensor->readHumidity());
     vals->setTemperature(dhtSensor->readTemperature());
   }
