@@ -3,17 +3,19 @@
 
 class Values {
   private:
+    static const bool CHANGED;
+    static const bool NOT_CHANGED;
     float humidity;
     float temperature;
     short co2;
 
-    void assignIfDifferent(float &oldValue, float newValue);
+    bool assignIfDifferent(float &oldValue, float newValue);
 
   public:
     Values(void);
-    void setHumidity(float);
-    void setTemperature(float);
-    void setCo2(short);
+    bool setHumidity(float);
+    bool setTemperature(float);
+    bool setCo2(short);
     float getHumidity(void);
     float getTemperature(void);
     short getCo2(void);
