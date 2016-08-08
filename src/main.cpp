@@ -10,9 +10,7 @@ Values* obtainedValues;
 Lcd* lcd;
 Sensors* sensors;
 
-#define DHTPIN 12// what digital pin we're connected to
-
-#define DHTTYPE DHT22   // DHT 22
+#define DHT_TYPE DHT22   // DHT 22
 
 void initInterrupt() {
   cli();
@@ -37,7 +35,7 @@ void setup() {
   obtainedValues = new Values();
   lcd = new Lcd(*obtainedValues);
   sensors = new Sensors(
-    *new DHT(DHT_PIN, DHT22),
+    *new DHT(DHT_PIN, DHT_TYPE),
     *obtainedValues);
 }
 
@@ -46,6 +44,6 @@ void loop() {
  delay(100);
 }
 
-ISR(TIMER1_COMPA_vect) {
+ISR(TIMER1_COMPA_vect) { 
   sensors->update();
 }
