@@ -10,5 +10,7 @@
 
 #define DHT_PIN 12
 
+#define PROXIMITY_TRIG 8
+#define PROXIMITY_ECHO 9
 
 #endif

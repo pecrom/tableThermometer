@@ -5,10 +5,13 @@
 #include "sensors/Sensors.h"
 #include "Values.h"
 #include "avr/interrupt.h"
+#include "sensors/Backlight.h"
 
 Values* obtainedValues;
 Lcd* lcd;
 Sensors* sensors;
+Ultrasonic* proximity;
+Backlight* backlight;
 
 #define DHT_TYPE DHT22   // DHT 22
 
@@ -34,16 +37,20 @@ void setup() {
   Serial.begin(9600);
   obtainedValues = new Values();
   lcd = new Lcd(*obtainedValues);
+  proximity = new Ultrasonic(PROXIMITY_TRIG, PROXIMITY_ECHO);
+  backlight = new Backlight(lcd, proximity);
   sensors = new Sensors(
     *new DHT(DHT_PIN, DHT_TYPE),
     *obtainedValues);
 }
 
 void loop() {
+ backlight->update();
  lcd->update();
  delay(100);
 }
 
-ISR(TIMER1_COMPA_vect) { 
+ISR(TIMER1_COMPA_vect) {
+  //@TODO update lcd only when new values are measured, otherwise keep the "old" ones
   sensors->update();
 }
