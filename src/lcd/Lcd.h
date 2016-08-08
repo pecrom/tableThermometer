@@ -24,8 +24,11 @@ class Lcd {
     void showCo2();
 
   public:
+    static const short LIGHT_ON;
+    static const short LIGHT_OFF;
     Lcd(Values& vals);
     void update(void);
+    void setLightOn(bool);
 };
 
 #endif

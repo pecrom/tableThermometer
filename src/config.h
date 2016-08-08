@@ -6,7 +6,9 @@
 #define LCD_DC 3
 #define LCD_SCLK 5
 #define LCD_CE 6
+#define LIGHT_PIN 7
 
 #define DHT_PIN 12
+
 
 #endif

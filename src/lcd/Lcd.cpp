@@ -6,6 +6,8 @@ const char *Lcd::HUMIDITY_LABEL = "Hum:\0";
 const char *Lcd::TEMPERATURE_LABEL = "Tmp:\0";
 const char *Lcd::CO2_LABEL = "CO2:\0";
 const short Lcd::VALS_LEFT_MARGIN = 33;
+const short Lcd::LIGHT_ON = LOW;
+const short Lcd::LIGHT_OFF = HIGH;
 
 Lcd::Lcd(Values& vals) {
   this->vals = &vals;
@@ -16,6 +18,8 @@ Lcd::Lcd(Values& vals) {
 void Lcd::initDisplay() {
   //pinCe, pinRst, pinDc, pinDin, pinSclk
   display = new Lcd5110(LCD_CE, LCD_RST, LCD_DC, LCD_DIN, LCD_SCLK);
+  pinMode(LIGHT_PIN, OUTPUT);
+  setLightOn(false);
   display->lcdInitialise();
 }
 
@@ -28,6 +32,8 @@ void Lcd::showValues() {
   showTemperature();
   showCo2();
 }
+
+
 
 void Lcd::showHumidity() {
   StringUtils::floatToChar(humStr, vals->getHumidity(), 1);
@@ -59,5 +65,12 @@ void Lcd::prepareUI() {
   display->lcdString(TEMPERATURE_LABEL);
   display->gotoXY(3, 3);
   display->lcdString(CO2_LABEL);
+}
 
+void Lcd::setLightOn(bool light) {
+  if (light) {
+    digitalWrite(LIGHT_PIN, LIGHT_ON);
+  } else {
+    digitalWrite(LIGHT_PIN, LIGHT_OFF);
+  }
 }
